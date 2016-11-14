@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div *ngIf="user" class=" user-profile col-sm-8 col-sm-offset-2">
+
+        <div class="row ">
+            <div class="">
+                <h2>User Details</h2>
+                <div class="clearfix">
+                    <a [routerLink]="['/user-edit', user.id]" class="edit-button">Edit</a>
+                    <button type="button" class="btn btn-danger" (click)="removeUser()">Delete</button>
+                </div>
+                <div class="user-info">
+                        <h3>Info</h3>
+                    <div class="col-xs-5">
+                        <img [src]="user.avatar" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-xs-7">
+                        <h4>{{user.firstName}} {{user.lastName}}</h4>
+                        <p>{{user.jobTitle}}</p>
+                        <p>{{user.age}} years old</p>
+                        <p>{{user.email}}</p>
+                        <p>{{user.state}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="user-bio">
+                <h3>Biography</h3>
+                <p>{{user.bio}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="user-skills">
+                <h3>Skills</h3>
+                <ul class="list-group">
+                    <li style="line-height: 63px;" class="list-group-item clearfix" *ngFor="let skill of user.skills">
+                        <div class="pull-left">
+                            {{skill.title}}
+                        </div>
+                        <div class="pull-right">
+                            <rating [max]="10" [(ngModel)]="skill.rating" [readonly]="true"></rating>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
